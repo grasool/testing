@@ -7,6 +7,8 @@ from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.utils import np_utils
 import pandas
 
+from keras.utils import multi_gpu_model
+
 
 batch_size = 1024
 nb_classes = 10
@@ -60,6 +62,8 @@ model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(nb_classes)) 
 model.add(Activation('softmax')) 
+
+model = multi_gpu_model(model, gpus=4)
 
 model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=["accuracy"])
 
