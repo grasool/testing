@@ -1,0 +1,2 @@
+pip install virtualenv
+virtualenv --system-site-packages -p python3 ./myvenv
